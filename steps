@@ -1,0 +1,66 @@
+You can download the step.docx file, the screen shots are attached in that file which will help you to understand.
+
+Step  1 :
+Create an EC2 instance on your AWS account. Install docker and aws CLI and configure IAM user with security credentials.
+If you need the steps for above tasks please DM me in LinkedIn.
+
+Step 2:
+Get the code of node-todo-app from github repo and clone it in your EC2 instance.
+Command:-  git clone https://github.com/LondheShubham153/node-todo-cicd.git
+
+Step 3:-
+Create Amzon Elastic Container Repository (ECR).
+Then create Repository.
+
+Step 4:-
+Once repo is created open it and click on view push commands.
+ 
+Step 5:-
+AWS will give you the commands to create your docker image and push to your Public Repo (in ECR) which you just created.
+
+Step 6 :- 
+You need to build the image in your EC2 instance where you have already copied the application code. (Step 2)
+
+Step 7:-
+Once image is pushed to your ECR verify it.
+ 
+Step 8:-
+Now create a cluster, i.e ECS. And use AWS Fargate option. (serverless)
+ 
+Step 9:-
+Congrats you have created cluster 
+ 
+Step 10:-
+Now create a task definition.
+What is task Definitions? -> 
+Task definition is basically to docker RUN command, you have already created docker image of your application and pushed it to ECR, now its time to run it along with auto scalability in your cluster. Here comes this task definition.  On a simple note you are defining the task.
+ 
+
+Here you can define your architecture as per your requirement. How many CPU you need (remember we are using Fargate, the serverless option), your storage requirement etc. 
+ 
+
+Give your repo link and required port details, for us port 80 and 8000 is required to run our application.
+ 
+
+Repo link you will get from your ECR >> URI
+
+Step 11:-
+Once task definition is created you need to wait until it shows provisioned and running.
+
+Step 12:-
+Now you need your task definition to be deployed in your cluster. 
+Click on your task definition >>Deploy>>Run Task
+ 
+Select your cluster from Dropdown and create the Run the task.
+ 
+Final step :-
+Once your task is running , get the task then copy the public IP and run in browser in port 8000….
+public_ip:8000
+This is the way you can verify if your app is running. If your security group does not have inbound rule , please add 8000 in inbound rule.
+ 
+Yeah you have deployed your node js app using ECR, ECS (Fargate, serverless)
+ 
+
+Please let me know if you have any challenge, and if you lie the steps/document please share my github repo and do let me know in the LinkedIN comment box.
+
+
